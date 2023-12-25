@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Resources\PostResourse;
 
 class PostController extends Controller
 {
@@ -19,7 +20,7 @@ class PostController extends Controller
     public function index()
     {
         return inertia('Posts/Index',[
-            'posts' => Post::all()
+            'posts' => PostResourse::collection(Post::all())
         ]);
     }
 }
